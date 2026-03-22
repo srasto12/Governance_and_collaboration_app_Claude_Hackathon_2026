@@ -13,9 +13,19 @@ export async function POST(request) {
     }
 
     const card = await generateCard(issue, opinion);
-    const savedCard = await saveHistoryCard(card);
 
-    return json({ card: savedCard });
+    try {
+      const savedCard = await saveHistoryCard(card);
+      return json({ card: savedCard });
+    } catch {
+      return json({
+        card: {
+          id: `ephemeral-${Date.now()}`,
+          ...card,
+          createdAt: new Date().toISOString()
+        }
+      });
+    }
   } catch (error) {
     return badRequest(error.message || "Failed to create card", 500);
   }
