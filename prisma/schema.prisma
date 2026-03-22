@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model CardHistory {
+  id                   String   @id @default(cuid())
+  issue                String
+  originalOpinion      String
+  concern              String
+  underlyingValue      String
+  whoIsAffected        String   @default("[]")
+  commonGround         String
+  constructiveNextStep String
+  valueTags            String   @default("[]")
+  evidence             String   @default("[]")
+  ethicalNotes         String   @default("[]")
+  source               String
+  runMeta              String?
+  fallbackReason       String?
+  createdAt            DateTime @default(now())
+
+  @@index([createdAt])
+}
