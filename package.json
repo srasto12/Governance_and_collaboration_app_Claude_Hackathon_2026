@@ -1,0 +1,16 @@
+{
+  "name": "common-ground-cards",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Track 4 MVP using TinyFish API for structured civic deliberation cards",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  }
+}

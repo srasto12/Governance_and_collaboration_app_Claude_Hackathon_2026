@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CommonGround Cards</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="bg-shape bg-shape-a"></div>
+  <div class="bg-shape bg-shape-b"></div>
+
+  <header class="topbar">
+    <h1>CommonGround Cards</h1>
+    <p>Turn opinions into structured, more productive civic dialogue with TinyFish-powered web evidence.</p>
+    <span id="statusPill" class="pill">Checking AI status...</span>
+  </header>
+
+  <main class="layout">
+    <section class="panel" id="screenInput">
+      <h2>1. Input</h2>
+      <label for="issue">Issue</label>
+      <select id="issue">
+        <option>Parking</option>
+        <option>Tuition</option>
+        <option>Housing</option>
+        <option>Club Funding</option>
+        <option>Campus Safety</option>
+        <option>Sustainability</option>
+        <option>Accessibility</option>
+        <option>Other</option>
+      </select>
+
+      <label for="opinion">Opinion</label>
+      <textarea id="opinion" rows="5" placeholder="Example: Parking prices punish students who live far away and have no choice but to drive."></textarea>
+
+      <div class="actions">
+        <button id="generateBtn">Generate Card</button>
+        <button id="seedBtn" class="ghost">Load Demo Opinion</button>
+      </div>
+    </section>
+
+    <section class="panel" id="screenCard">
+      <h2>2. Card Output</h2>
+      <div id="cardEmpty" class="empty">Generate a card to see structured output.</div>
+      <article id="cardView" class="card hidden"></article>
+      <div class="actions">
+        <button id="regenerateBtn" class="ghost" disabled>Regenerate</button>
+        <button id="addGroupBtn" disabled>Add To Group</button>
+      </div>
+    </section>
+
+    <section class="panel" id="screenInsights">
+      <h2>3. Group Insights</h2>
+      <p class="hint">Add 3 to 5 cards for the best demo flow.</p>
+      <div id="groupCards" class="group-cards"></div>
+      <div class="actions">
+        <button id="insightsBtn" disabled>Generate Group Insights</button>
+        <button id="resetBtn" class="ghost">Reset Group</button>
+      </div>
+      <div id="insightsView" class="insights hidden"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>
+      Ethical note: this tool supports discussion quality, it does not determine truth, replace experts, or silence disagreement.
+    </small>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
