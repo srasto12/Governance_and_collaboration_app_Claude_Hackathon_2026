@@ -48,11 +48,6 @@ Or create a local `.env` from `.env.example` and export variables in your shell.
 - Cookbook PR ($25): `https://github.com/tinyfish-io/TinyFish-cookbook/blob/main/README.md`
 - Accelerator golden tickets: `https://www.tinyfish.ai/accelerator`
 
-## How to maximize $50 incentive chance
-1. Build and demo this app using TinyFish key enabled.
-2. Post a short demo video on X or LinkedIn and mention TinyFish.
-3. Submit a useful PR to TinyFish cookbook with your integration pattern.
-
 ## Notes
 - If `TINYFISH_API_KEY` is missing or TinyFish call fails, the app falls back to local heuristic generation so the UI still demos.
 - Group insights are local aggregation in this MVP.
