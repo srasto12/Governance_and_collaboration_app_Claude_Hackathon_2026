@@ -186,14 +186,41 @@ async function generateInsights() {
       .map(v => `<li>${escapeHtml(v.value)} (${escapeHtml(String(v.count))})</li>`)
       .join('');
 
+    const metrics = (insights.successMetrics || [])
+      .map(metric => `<li>${escapeHtml(metric)}</li>`)
+      .join('');
+
+    const fallbackReason = insights.fallbackReason
+      ? `<p class="hint">Fallback reason: ${escapeHtml(insights.fallbackReason)}</p>`
+      : '';
+
     refs.insightsView.innerHTML = `
       <strong>Shared Values</strong>
       <ul>${rows || '<li>None detected</li>'}</ul>
+
       <strong>Compromise Summary</strong>
       <p>${escapeHtml(insights.compromiseSummary || '')}</p>
+
+      <strong>Recommended Solution</strong>
+      <p>${escapeHtml(insights.recommendedSolution || '')}</p>
+
+      <strong>Why This Helps</strong>
+      <p>${escapeHtml(insights.solutionReasoning || '')}</p>
+
+      <strong>Main Tradeoff</strong>
+      <p>${escapeHtml(insights.mainTradeoff || '')}</p>
+
+      <strong>Suggested Pilot</strong>
+      <p>${escapeHtml(insights.suggestedPilot || '')}</p>
+
+      <strong>Success Metrics</strong>
+      <ul>${metrics || '<li>No metrics suggested</li>'}</ul>
+
       <strong>Facilitation Tip</strong>
       <p>${escapeHtml(insights.facilitationTip || '')}</p>
+
       <small>Source: ${escapeHtml(insights.source || 'unknown')}</small>
+      ${fallbackReason}
     `;
   } catch (err) {
     alert(err.message);

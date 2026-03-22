@@ -228,6 +228,11 @@ function fallbackInsights(cards) {
     sharedValues,
     compromiseSummary,
     facilitationTip: 'Start with shared values first, then ask each group for one non-negotiable need and one flexible preference.',
+    recommendedSolution: 'Test a limited pilot policy that addresses the most common concerns without making a permanent campus-wide change yet.',
+    solutionReasoning: 'A pilot allows the university and students to evaluate fairness, access, and practicality before scaling.',
+    mainTradeoff: 'A smaller pilot may not solve the issue for everyone immediately, but it reduces risk and allows evidence-based adjustment.',
+    suggestedPilot: 'Run the policy in one area or for one semester, then review outcomes publicly.',
+    successMetrics: ['student satisfaction', 'usage levels', 'equity impact', 'operational feasibility'],
     source: 'fallback'
   };
 }
@@ -389,12 +394,19 @@ Return STRICT JSON only using this schema:
     { "value": "string", "count": number }
   ],
   "compromiseSummary": "string",
-  "facilitationTip": "string"
+  "facilitationTip": "string",
+  "recommendedSolution": "string",
+  "solutionReasoning": "string",
+  "mainTradeoff": "string",
+  "suggestedPilot": "string",
+  "successMetrics": ["string"]
 }
 
 Rules:
 - Focus on overlap across the cards.
 - Emphasize shared values, tradeoffs, and constructive compromise.
+- The recommended solution should be balanced and realistic.
+- Prefer pilot solutions over sweeping permanent changes.
 - Be concise and neutral.
 - Do not invent values not supported by the cards.
 `.trim();
@@ -448,6 +460,13 @@ Rules:
       : [],
     compromiseSummary: String(resultObj.compromiseSummary || ''),
     facilitationTip: String(resultObj.facilitationTip || ''),
+    recommendedSolution: String(resultObj.recommendedSolution || ''),
+    solutionReasoning: String(resultObj.solutionReasoning || ''),
+    mainTradeoff: String(resultObj.mainTradeoff || ''),
+    suggestedPilot: String(resultObj.suggestedPilot || ''),
+    successMetrics: Array.isArray(resultObj.successMetrics)
+      ? resultObj.successMetrics.map(item => String(item).trim()).filter(Boolean)
+      : [],
     source: 'tinyfish'
   };
 }
